@@ -1,0 +1,15 @@
+name: Minimum Supported Rust Version
+description: Get the minimum supported Rust version of your crate
+inputs:
+  path:
+    description: Path to the crate
+    required: true
+    default: '.'
+outputs:
+  msrv:
+    description: The minimum supported Rust version
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.path }}
