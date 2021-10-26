@@ -1,5 +1,8 @@
 name: Minimum Supported Rust Version
 description: Get the minimum supported Rust version of your crate
+branding:
+  icon: package
+  color: yellow
 inputs:
   path:
     description: Path to the crate
