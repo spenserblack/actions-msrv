@@ -1,0 +1,45 @@
+name: Examples
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  enforce-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: spenserblack/actions-msrv@master
+        id: get-msrv
+        with:
+          path: ./test/
+      - name: Fail Assertion
+        if: ${{ steps.get-msrv.outputs.msrv != '1.56.0' }}
+        run: |
+          echo "::error title=MSRV Check::Expected MSRV 1.56.0, got ${{ steps.get-msrv.outputs.msrv }}"
+          exit 1
+
+  create-msrv-badge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: spenserblack/actions-msrv@master
+        id: get-msrv
+        with:
+          path: ./test/
+      - name: Create Badge
+        run: curl https://img.shields.io/badge/minimum%20rust%20version-${{ steps.get-msrv.outputs.msrv }}-blue > msrv.svg
+      - name: Commit Badge
+        # If there are no changes to the badge this would error out. But it
+        # isn't a problem if there were no changes, so errors are allowed.
+        continue-on-error: true
+        run: |
+          git add msrv.svg
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update MSRV badge [Skip CI]"
+          git push
