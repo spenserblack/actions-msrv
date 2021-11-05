@@ -6,4 +6,4 @@ Get the Minimum Supported Rust Version of your project
 This is essentially a wrapper around [cargo-msrv](https://github.com/foresterre/cargo-msrv).
 Many thanks to the maintainers of that crate!
 
-## [Examples](./.github/workflows/examples.yml)
+## [Examples](./examples/.github/workflows/examples.yml)
