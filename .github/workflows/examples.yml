@@ -19,7 +19,7 @@ jobs:
       - name: Fail Assertion
         if: ${{ steps.get-msrv.outputs.msrv != '1.56.0' }}
         run: |
-          echo "::error title=MSRV Check::Expected MSRV 1.56.0, got ${{ steps.get-msrv-outputs.msrv }}"
+          echo "::error title=MSRV Check::Expected MSRV 1.56.0, got ${{ steps.get-msrv.outputs.msrv }}"
           exit 1
 
   create-msrv-badge:
