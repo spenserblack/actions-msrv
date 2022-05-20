@@ -13,6 +13,6 @@ outputs:
     description: The minimum supported Rust version
 runs:
   using: docker
-  image: Dockerfile
+  image: 'docker://ghcr.io/spenserblack/actions-msrv:release'
   args:
     - ${{ inputs.path }}
