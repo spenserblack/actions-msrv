@@ -1,5 +1,6 @@
 # actions-msrv
 
+[![Publish Docker Image](https://github.com/spenserblack/actions-msrv/actions/workflows/publish.yml/badge.svg)](https://github.com/spenserblack/actions-msrv/actions/workflows/publish.yml)
 
 Get the Minimum Supported Rust Version of your project
 
