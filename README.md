@@ -7,6 +7,26 @@ Get the Minimum Supported Rust Version of your project
 This is essentially a wrapper around [cargo-msrv](https://github.com/foresterre/cargo-msrv).
 Many thanks to the maintainers of that crate!
 
+## Usage
+
+### Basics
+
+```yaml
+steps:
+  - uses: actions/checkout@v2
+  - uses: spenserblack/actions-msrv@<commit-ish>
+    id: get-msrv
+  - run: 'echo "MSRV is ${{ steps.get-msrv.outputs.msrv }}"'
+```
+
+### Setting MSRV in `Cargo.toml`
+
+```yaml
+- uses: spenserblack/actions-msrv@<commit-ish>
+  with:
+    set: true
+```
+
 ## [Examples](./examples/.github/workflows/examples.yml)
 
 *__NOTE__ You might want to look up [reusable workflows][reusing wf docs]
