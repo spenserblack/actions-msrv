@@ -17,4 +17,4 @@ jobs:
         id: action-step
         with:
           path: ./test/
-      - run: 'echo MSRV is ${{ steps.action-step.outputs.msrv }}"'
+      - run: 'echo MSRV is ${{ steps.action-step.outputs.msrv }}'
